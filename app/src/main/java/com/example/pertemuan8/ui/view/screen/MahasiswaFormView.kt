@@ -1,5 +1,7 @@
 package com.example.pertemuan8.ui.view.screen
 
+
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -7,31 +9,39 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.packInts
+import androidx.compose.ui.unit.sp
 import com.example.pertemuan8.R
-import com.example.pertemuan8.model.Mahasiswa
 
 @Composable
 fun MahasiswaFormView(
     modifier: Modifier,
-    onSubmitButtonClicked:(MutableList<String>) -> Unit
-    onBackBUttonClicked: () ->Unit
-) {
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onBackButtonClicked: () -> Unit
+){
     var nama by remember {
         mutableStateOf("")
     }
@@ -42,9 +52,9 @@ fun MahasiswaFormView(
         mutableStateOf("")
     }
     val listData: MutableList<String> =
-        mutableListOf(nama, nim, email)
+        mutableListOf(nim, nama, email)
 
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(
@@ -55,9 +65,9 @@ fun MahasiswaFormView(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.padding(16.dp))
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+        ){
             Image(
                 painter = painterResource(
                     id = R.drawable.img
@@ -65,12 +75,12 @@ fun MahasiswaFormView(
                 contentDescription = "",
                 modifier = Modifier.size(45.dp)
             )
-            Spacer(modifier.padding(start = 16.dp))
+            Spacer(modifier = Modifier.padding(start = 16.dp))
             Column {
                 Text(
                     text = "Universitas Muhammadiyah Yogyakarta",
-                    color = Color . Red,
-                    fontSize = 15.dp,
+                    color = Color.Red,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
@@ -90,7 +100,7 @@ fun MahasiswaFormView(
                         )
                     )
                     .fillMaxSize(),
-            ) {
+            ){
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -98,16 +108,9 @@ fun MahasiswaFormView(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Masukkan Data Kamu",
+                        text = "Masukan Data Kamu",
                         fontWeight = FontWeight.Bold,
-                        fontSize = 19.dp
+                        fontSize = 19.sp
                     )
                     Text(
                         text = "Isi sesuai data yang kamu daftarkan",
-                        fontWeight = FontWeight.Light
-                    )
-                    Spacer(modifier = Modifier)
-                }
-            }
-        }
-    }
