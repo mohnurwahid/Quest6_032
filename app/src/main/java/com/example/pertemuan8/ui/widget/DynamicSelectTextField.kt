@@ -22,7 +22,7 @@ fun DynamicSelectTextField(
     options: List<String>,
     label: String,
     onValueChangedEvent: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier : Modifier = Modifier
 ){
     var expanded by remember {
         mutableStateOf(false)
